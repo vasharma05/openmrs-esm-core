@@ -158,7 +158,9 @@ export function openmrsFetch<T = any>(path: string, fetchInit: FetchConfig = {})
         console.log('followRedirects', followRedirects);
         if (followRedirects && response.headers.has('location')) {
           const location = response.headers.get('location');
+          console.log({ location });
           if (location) {
+            console.log('navigating from openmrs-fetch', location);
             navigate({ to: location });
           }
         }

@@ -25,8 +25,10 @@ const RedirectLogout: React.FC = () => {
           });
 
           if (config.provider.type === 'oauth2') {
+            console.log({ navigatingTo: config.provider.logoutUrl });
             navigate({ to: config.provider.logoutUrl });
           } else {
+            console.log({ navigatingTo: '${openmrsSpaBase}/login' });
             navigate({ to: '${openmrsSpaBase}/login' });
           }
         })
