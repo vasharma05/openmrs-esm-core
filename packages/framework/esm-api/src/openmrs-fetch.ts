@@ -152,7 +152,10 @@ export function openmrsFetch<T = any>(path: string, fetchInit: FetchConfig = {})
     const response = r as FetchResponse<T>;
     if (response.ok) {
       if (response.status === 204) {
+        console.log('location1', response.headers.has('location'));
+        console.log('location1', response.headers.has('Location'));
         const { followRedirects } = await getConfig('@openmrs/esm-api');
+        console.log('followRedirects', followRedirects);
         if (followRedirects && response.headers.has('location')) {
           const location = response.headers.get('location');
           if (location) {
